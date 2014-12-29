@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141228083611) do
+ActiveRecord::Schema.define(version: 20141228133645) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20141228083611) do
     t.integer  "like"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "category_id"
+  end
+
+  add_index "articles", ["category_id"], name: "index_articles_on_category_id", using: :btree
+  add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
+
+  create_table "articles_tags", id: false, force: true do |t|
+    t.integer "article_id"
+    t.integer "tag_id"
   end
 
   create_table "categories", force: true do |t|
@@ -35,7 +45,10 @@ ActiveRecord::Schema.define(version: 20141228083611) do
     t.datetime "create_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "article_id"
   end
+
+  add_index "comments", ["article_id"], name: "index_comments_on_article_id", using: :btree
 
   create_table "tags", force: true do |t|
     t.string   "name"
