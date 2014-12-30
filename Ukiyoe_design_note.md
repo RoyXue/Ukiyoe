@@ -4,37 +4,43 @@ Models
 
 Articles 
 
-* title 
-* content
-* category ForeignKey
-* tag m2m
-* create_at time, default now
-* last_edit
-* status draft/public/delete
-* like
+* title 		string	
+* content		text
+* create_at	datetime
+* last_edit	datetime
+* status 		string
+* like			integer
+* ====
+* belongs_to user
+* belongs_to	category
+* has_and_belongs_to_many tags
+* has_many	comments
 
 Comment
 
-* article
-* commenter
-* content
-* create_at
+* content		text
+* create_at	datetime
+* ===
+* belongs_to	article
 
 User
 
-* nickname
-* email
-* password
-* avatar
-* profile
+* nickname	string
+* email 		string
+* password 	string
+* profile 	string
+* ===
+* has_many 	articles
 
 Category
 
-* name
-* parent
+* name			string
+* ===
+* has_many	articles
 
 tag
 
 * name
-
+* ===
+* has_and_belongs_to_many articles
 
