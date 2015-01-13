@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
-  resources :comments
+  resources :articles do
+    resources :comments
+  end
 
-  resources :articles
+  resources :tags do
+    resources :articles
+  end
 
-  resources :tags
+  resources :categories do
+    resources :articles
+  end
 
-  resources :categories
-
-  resources :users
+  resources :users do
+    resources :users
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
