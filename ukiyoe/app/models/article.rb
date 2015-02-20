@@ -14,6 +14,6 @@ class Article < ActiveRecord::Base
     self.status ||= "public"
     self.create_at ||= Time.current
     self.last_edit ||= Time.current
-    self.like || = 0
+    self.like ||= 0
   end
 end
