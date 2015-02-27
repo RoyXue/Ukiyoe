@@ -20,20 +20,16 @@
     <%= f.text_area :content %>
   </div>
   <div class="field">
-    <%= f.label :create_at %><br>
-    <%= f.datetime_select :create_at %>
-  </div>
-  <div class="field">
-    <%= f.label :last_edit %><br>
-    <%= f.datetime_select :last_edit %>
-  </div>
-  <div class="field">
     <%= f.label :status %><br>
     <%= f.text_field :status %>
   </div>
-  <div class="field">
-    <%= f.label :like %><br>
-    <%= f.number_field :like %>
+  <div class='field'>
+	  <%= f.label :user %><br>
+	  <%= f.collection_select(:user_id, User.all, :id, :nickname) %>
+  </div>
+  <div class='field'>
+	  <%= f.label :category %><br>
+	  <%= f.collection_select(:category_id, Category.all, :id, :name) %>
   </div>
   <div class="actions">
     <%= f.submit %>
